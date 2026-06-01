@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import './ListingPage.css'
+import './Listingpage.css'
 
 const attractions = [
   { id: 1, name: 'Aquaria KLCC', location: 'Kuala Lumpur', category: 'Culture', price: 55, rating: 4.3, img: 'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=600&q=80' },

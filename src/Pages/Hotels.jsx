@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import './ListingPage.css'
+import './Listingpage.css'
 
 const hotels = [
   { id: 1, name: 'The RuMa Hotel & Residences', location: 'Bukit Bintang', price: 350, rating: 4.5, img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80' },
