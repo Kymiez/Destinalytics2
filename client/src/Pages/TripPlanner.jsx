@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './TripPlanner.css'
 
+const API = import.meta.env.VITE_API_URL || ''
+
 const HOTELS = [
   { id: 'h1', name: 'The RuMa Hotel & Residences', type: 'Hotel', img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80', price: 350 },
   { id: 'h2', name: 'Hilton Hotel KL', type: 'Hotel', img: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&q=80', price: 135 },
@@ -187,7 +189,7 @@ export default function TripPlanner() {
     setSelectedSavedTrip(null)
 
     try {
-      const res = await fetch('/api/trips', {
+      const res = await fetch(`${API}/api/trips`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       const data = await res.json()
@@ -239,7 +241,7 @@ async function handleSavePlanner() {
   }
 
   try {
-const res = await fetch('/api/trips', {
+const res = await fetch(`${API}/api/trips`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

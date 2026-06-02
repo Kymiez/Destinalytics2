@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './Listingpage.css'
+const API = import.meta.env.VITE_API_URL || ''
 
 const attractions = [
   { id: 1, name: 'Aquaria KLCC', location: 'Kuala Lumpur', category: 'Culture', price: 55, rating: 4.3, img: 'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=600&q=80' },
@@ -33,7 +34,7 @@ function Attractions() {
 
   useEffect(() => {
     if (!token) return
-    fetch('/api/favorites', {
+    fetch(`${API}/api/favorites`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.ok ? res.json() : [])
@@ -121,7 +122,7 @@ function Attractions() {
                     }
 
                     if (existingFavorite) {
-                      await fetch(`/api/favorites/${existingFavorite.id}`, {
+                      await fetch(`${API}/api/favorites/${existingFavorite.id}`, {
                         method: 'DELETE',
                         headers: { 'Authorization': `Bearer ${token}` }
                       })
@@ -130,7 +131,7 @@ function Attractions() {
                     }
 
                     try {
-                      const res = await fetch('/api/favorites', {
+                      const res = await fetch(`${API}/api/favorites`, {
                         method: 'POST',
                         headers: {
                           'Content-Type': 'application/json',

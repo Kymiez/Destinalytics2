@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './Listingpage.css'
+const API = import.meta.env.VITE_API_URL || ''
 
 const hotels = [
   { id: 1, name: 'The RuMa Hotel & Residences', location: 'Bukit Bintang', price: 350, rating: 4.5, img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80' },
@@ -33,7 +34,7 @@ function Hotels() {
 
   useEffect(() => {
     if (!token) return
-    fetch('/api/favorites', {
+    fetch(`${API}/api/favorites`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.ok ? res.json() : [])
@@ -100,7 +101,7 @@ function Hotels() {
       </section>
 
       {/* Count */}
-      <div className="listing-count">{filtered.length} trips available</div>
+      <div className="listing-count">{filtered.length} hotels available</div>
 
       {/* Card Grid */}
       <section className="listing-grid">
@@ -124,7 +125,7 @@ function Hotels() {
                     }
 
                     if (existingFavorite) {
-                      await fetch(`/api/favorites/${existingFavorite.id}`, {
+                      await fetch(`${API}/api/favorites/${existingFavorite.id}`, {
                         method: 'DELETE',
                         headers: { 'Authorization': `Bearer ${token}` }
                       })
@@ -133,7 +134,7 @@ function Hotels() {
                     }
 
                     try {
-                      const res = await fetch('/api/favorites', {
+                      const res = await fetch(`${API}/api/favorites`, {
                         method: 'POST',
                         headers: {
                           'Content-Type': 'application/json',

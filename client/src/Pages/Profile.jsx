@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './Profile.css'
 
+
+const API = import.meta.env.VITE_API_URL || ''
+
 const DUMMY_WISHLIST = [
   { id: 1, name: 'St Regis KL', type: 'Hotel', img: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&q=80', price: 300, location: 'Kuala Lumpur', link: '/hotels/4' },
   { id: 2, name: 'Sunway Lagoon', type: 'Attraction', img: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=400&q=80', price: 85, location: 'Subang, KL', link: '/attractions/7' },
@@ -57,7 +60,7 @@ export default function Profile() {
 
   async function fetchProfile() {
     try {
-      const res = await fetch('/api/profile', {
+      const res = await fetch(`${API}/api/profile`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       if (res.status === 401 || res.status === 403) {
@@ -78,7 +81,7 @@ export default function Profile() {
 
   async function fetchTrips() {
     try {
-      const res = await fetch('/api/trips', {
+      const res = await fetch(`${API}/api/trips`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       const data = await res.json()
@@ -123,7 +126,7 @@ export default function Profile() {
 
   async function fetchFavourites() {
     try {
-      const res = await fetch('/api/favorites', {
+      const res = await fetch(`${API}/api/favorites`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       if (!res.ok) {
@@ -140,7 +143,7 @@ export default function Profile() {
   async function handleDeleteFavourite(e, favId) {
     e.stopPropagation()
     try {
-      await fetch(`/api/favorites/${favId}`, {
+      await fetch(`${API}/api/favorites/${favId}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -160,7 +163,7 @@ export default function Profile() {
         body.currentPassword = userForm.currentPassword
         body.newPassword = userForm.newPassword
       }
-      const res = await fetch('http://localhost:5000/api/profile', {
+      const res = await fetch(`${API}/api/profile`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(body)
@@ -189,7 +192,7 @@ export default function Profile() {
     e.stopPropagation()
     if (!window.confirm('Delete this trip?')) return
     try {
-      await fetch(`http://localhost:5000/api/trips/${tripId}`, {
+      await fetch(`${API}/api/trips/${tripId}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       })
