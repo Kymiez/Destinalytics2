@@ -32,4 +32,8 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`)
 })
 
+// Add this BEFORE your route imports
+app.get('/test', (req, res) => {
+  res.json({ message: 'test route works' })
+})
 module.exports = app
