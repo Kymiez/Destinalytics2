@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model trip {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  tripName        String
+  startDate       DateTime
+  endDate         DateTime
+  guests          Int      @default(1)
+  estimatedBudget Float    @default(0)
+  totalCost       Float    @default(0)
+  activities      String
+  createdAt       DateTime @default(now())
+  user            user     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model favorite {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  type      String
+  itemId    Int
+  name      String
+  location  String
+  img       String?
+  price     Float    @default(0)
+  link      String
+  createdAt DateTime @default(now())
+  user      user     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, type, itemId])
+  @@index([userId])
+}
+
+model user {
+  id        Int        @id @default(autoincrement())
+  name      String
+  email     String     @unique
+  password  String
+  createdAt DateTime   @default(now())
+  trip      trip[]
+  favorite  favorite[]
+}
