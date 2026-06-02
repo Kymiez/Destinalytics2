@@ -14,9 +14,10 @@ const HOTELS = [
 const ATTRACTIONS = [
   { id: 'a1', name: 'Aquaria KLCC', type: 'Attraction', img: 'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&q=80', price: 55 },
   { id: 'a2', name: 'KLCC Park', type: 'Attraction', img: 'https://upload.wikimedia.org/wikipedia/commons/8/8f/Batu_Caves_stairs_2022-05.jpg', price: 0 },
-  { id: 'a3', name: 'Batu Caves', type: 'Attraction', img: 'https://images.unsplash.com/photo-1545571023-af6a5de16be5?w=400&q=80', price: 5 },
+  { id: 'a3', name: 'Batu Caves', type: 'Attraction', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1zjWY39fxaX4YaFHrwwPNt13gNkWbagW8Qg&s', price: 5 },
   { id: 'a4', name: 'KL Bird Park', type: 'Attraction', img: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=400&q=80', price: 35 },
-  { id: 'a5', name: 'KL Tower', type: 'Attraction', img: 'https://images.unsplash.com/photo-1532094349884-543559c8c2b5?w=400&q=80', price: 45 },
+  { id: 'a5', name: 'KL Tower', type: 'Attraction', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIUhzVDXaCxqmbBZfc5Mfv97Bnfoi34d4QtQ&s', price: 45 },
+   { id: 'a6', name: 'Petrosains', type: 'Attraction', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwaFZGj3EjXMQ-FsxBIr10rn0HQ_WyC2RsVQ&s', price: 50 },
 ]
 
 const HOURS = ['6:00 AM','7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM',
